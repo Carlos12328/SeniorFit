@@ -1,0 +1,45 @@
+{
+  "name": "seniorfit",
+  "version": "1.0.0",
+  "description": "MVP SeniorFit reconstruído com foco em testabilidade acadêmica.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "init-db": "node backend/database/init.js",
+    "test": "jest --coverage --verbose --runInBand",
+    "test:unit": "jest tests/unit --coverage --verbose --runInBand"
+  },
+  "keywords": [
+    "seniorfit",
+    "qa",
+    "mvp",
+    "sqlite",
+    "express"
+  ],
+  "author": "Manus AI",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "backend/**/*.js",
+      "!backend/server.js",
+      "!backend/database/init.js",
+      "!backend/database/connection.js"
+    ]
+  }
+}
