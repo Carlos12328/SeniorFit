@@ -34,6 +34,42 @@ async function criarIdoso(dados) {
   return { ok: true, dados: await buscarIdosoPorId(resultado.lastID) };
 }
 
+async function editarIdoso(id, dados) {
+  const db = await getDb();
+  const idoso = await db.get('SELECT id FROM idosos WHERE id = ?', [id]);
+  if (!idoso) return { ok: false, statusCode: 404, codigoErro: 'IDOSO_NAO_ENCONTRADO', mensagem: 'Idoso não encontrado' };
+
+  const nome  = dados.nome ? dados.nome.trim() : null;
+  const idade = dados.idade ? Number(dados.idade) : null;
+  if (!nome)  return { ok: false, statusCode: 400, codigoErro: 'NOME_OBRIGATORIO', mensagem: 'Nome é obrigatório' };
+  if (!idade || idade < 1 || idade > 130) return { ok: false, statusCode: 400, codigoErro: 'IDADE_INVALIDA', mensagem: 'Idade inválida' };
+
+  const idAcompanhante = dados.idAcompanhante || null;
+  if (idAcompanhante) {
+    const acomp = await db.get('SELECT id, tipoUsuario FROM usuarios WHERE id = ?', [idAcompanhante]);
+    if (!acomp || acomp.tipoUsuario !== 'acompanhante') {
+      return { ok: false, statusCode: 400, codigoErro: 'ACOMPANHANTE_INVALIDO', mensagem: 'Acompanhante inválido' };
+    }
+  }
+
+  await db.run('UPDATE idosos SET nome = ?, idade = ?, idAcompanhante = ? WHERE id = ?', [nome, idade, idAcompanhante, id]);
+  return { ok: true, dados: await buscarIdosoPorId(id) };
+}
+
+async function excluirIdoso(id) {
+  const db = await getDb();
+  const idoso = await db.get('SELECT id FROM idosos WHERE id = ?', [id]);
+  if (!idoso) return { ok: false, statusCode: 404, codigoErro: 'IDOSO_NAO_ENCONTRADO', mensagem: 'Idoso não encontrado' };
+
+  const atividades = await db.get('SELECT COUNT(*) as total FROM atividades WHERE idIdoso = ?', [id]);
+  if (atividades.total > 0) {
+    return { ok: false, statusCode: 400, codigoErro: 'IDOSO_COM_ATIVIDADES', mensagem: 'Este idoso possui atividades registradas e não pode ser excluído' };
+  }
+
+  await db.run('DELETE FROM idosos WHERE id = ?', [id]);
+  return { ok: true, dados: null };
+}
+
 async function listarIdosos(usuario) {
   const db = await getDb();
   const base = `SELECT i.id, i.nome, i.idade, i.idAcompanhante, u.nome AS nomeAcompanhante
@@ -74,4 +110,4 @@ async function validarAcessoAoIdoso(usuario, idIdoso) {
   return { ok: true, dados: idoso };
 }
 
-module.exports = { criarIdoso, listarIdosos, listarIdososSemAcompanhante, vincularAcompanhante, buscarIdosoPorId, validarAcessoAoIdoso };
+module.exports = { criarIdoso, editarIdoso, excluirIdoso, listarIdosos, listarIdososSemAcompanhante, vincularAcompanhante, buscarIdosoPorId, validarAcessoAoIdoso };

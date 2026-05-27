@@ -10,6 +10,26 @@
 
 <div id="navbar"></div>
 
+<!-- Modal de edição -->
+<div id="modalEdicaoIdoso" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:100; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:16px; padding:32px; width:100%; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,.15);">
+    <h2 style="margin-top:0;">Editar idoso</h2>
+    <div id="msgEdicaoIdoso" class="alerta"></div>
+    <label for="editNomeIdoso">Nome</label>
+    <input id="editNomeIdoso" type="text" placeholder="Nome completo">
+    <label for="editIdadeIdoso" style="margin-top:12px;">Idade</label>
+    <input id="editIdadeIdoso" type="number" min="1" max="130" placeholder="Idade">
+    <label for="editAcompanhanteIdoso" style="margin-top:12px;">Acompanhante</label>
+    <select id="editAcompanhanteIdoso">
+      <option value="">Sem acompanhante</option>
+    </select>
+    <div class="actions" style="margin-top:20px;">
+      <button onclick="salvarEdicaoIdoso()">Salvar</button>
+      <button onclick="fecharEdicaoIdoso()" class="secundario">Cancelar</button>
+    </div>
+  </div>
+</div>
+
 <main class="container">
 
   <section class="card" data-permissao="idosos:editar">
@@ -65,10 +85,11 @@
           <th>Nome</th>
           <th>Idade</th>
           <th>Acompanhante</th>
+          <th data-permissao="idosos:editar">Ações</th>
         </tr>
       </thead>
       <tbody id="tbodyIdosos">
-        <tr><td colspan="3" class="small">Carregando...</td></tr>
+        <tr><td colspan="4" class="small">Carregando...</td></tr>
       </tbody>
     </table>
   </section>

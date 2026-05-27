@@ -14,5 +14,11 @@ async function listarSemAcompanhante(req, res) {
 async function vincular(req, res) {
   return responderResultado(res, await service.vincularAcompanhante(Number(req.params.id), req.usuario.id), 200, 'Vínculo realizado com sucesso');
 }
+async function editar(req, res) {
+  return responderResultado(res, await service.editarIdoso(Number(req.params.id), req.body), 200, 'Idoso atualizado com sucesso');
+}
+async function excluir(req, res) {
+  return responderResultado(res, await service.excluirIdoso(Number(req.params.id)), 200, 'Idoso excluído com sucesso');
+}
 
-module.exports = { criar, listar, listarSemAcompanhante, vincular };
+module.exports = { criar, listar, listarSemAcompanhante, vincular, editar, excluir };

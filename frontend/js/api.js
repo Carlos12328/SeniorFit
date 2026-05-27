@@ -36,7 +36,9 @@ const api = {
     criar: (dados) => apiRequest('/idosos', { method: 'POST', body: dados }),
     listar: () => apiRequest('/idosos'),
     semAcompanhante: () => apiRequest('/idosos/sem-acompanhante'),
-    vincular: (id) => apiRequest('/idosos/' + id + '/vincular', { method: 'PATCH' })
+    vincular: (id) => apiRequest('/idosos/' + id + '/vincular', { method: 'PATCH' }),
+    editar: (id, dados) => apiRequest('/idosos/' + id, { method: 'PUT', body: dados }),
+    excluir: (id) => apiRequest('/idosos/' + id, { method: 'DELETE' })
   },
   atividades: {
     tipos: () => apiRequest('/tipos-atividades'),
