@@ -11,7 +11,6 @@ CREATE TABLE usuarios (
   email TEXT NOT NULL UNIQUE,
   senha TEXT NOT NULL,
   tipoUsuario TEXT NOT NULL CHECK (tipoUsuario IN ('admin', 'acompanhante', 'profissional')),
-  status TEXT NOT NULL DEFAULT 'ativo' CHECK (status IN ('pendente', 'ativo', 'bloqueado')),
   criadoEm TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

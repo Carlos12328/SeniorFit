@@ -15,14 +15,6 @@ async function login(email, senha) {
     return { ok: false, statusCode: 401, codigoErro: 'CREDENCIAIS_INVALIDAS', mensagem: 'Email ou senha inválidos' };
   }
 
-  // Bloqueia login de usuários pendentes ou bloqueados
-  if (usuario.status === 'pendente') {
-    return { ok: false, statusCode: 403, codigoErro: 'APROVACAO_PENDENTE', mensagem: 'Seu cadastro ainda está aguardando aprovação do administrador' };
-  }
-  if (usuario.status === 'bloqueado') {
-    return { ok: false, statusCode: 403, codigoErro: 'USUARIO_BLOQUEADO', mensagem: 'Seu acesso foi bloqueado. Entre em contato com o administrador' };
-  }
-
   const senhaCorreta = await bcrypt.compare(String(senha), usuario.senha);
   if (!senhaCorreta) {
     return { ok: false, statusCode: 401, codigoErro: 'CREDENCIAIS_INVALIDAS', mensagem: 'Email ou senha inválidos' };

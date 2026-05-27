@@ -7,10 +7,9 @@ const { getDb, closeDb } = require('./connection');
 
 async function inserirUsuario(db, usuario) {
   const senhaHash = await bcrypt.hash(usuario.senha, 10);
-  const status = usuario.status || 'ativo';
   const resultado = await db.run(
-    'INSERT INTO usuarios (nome, email, senha, tipoUsuario, status) VALUES (?, ?, ?, ?, ?)',
-    [usuario.nome, usuario.email, senhaHash, usuario.tipoUsuario, status]
+    'INSERT INTO usuarios (nome, email, senha, tipoUsuario) VALUES (?, ?, ?, ?)',
+    [usuario.nome, usuario.email, senhaHash, usuario.tipoUsuario]
   );
   return resultado.lastID;
 }
