@@ -1,1 +1,69 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Histórico | SeniorFit</title><link rel="stylesheet" href="/css/style.css"></head><body><div id="navbar"></div><main class="container"><section class="card"><h1>Histórico de Atividades</h1><p class="subtitulo">Acompanhantes só recebem do backend os idosos e atividades vinculados a eles.</p><div id="msgHistorico" class="alerta"></div><div class="form-grid"><div><label for="filtroIdoso">Idoso</label><select id="filtroIdoso" data-test="historico-idoso"><option value="">Todos permitidos</option></select></div><div><label for="dataInicio">Data início</label><input id="dataInicio" type="date"></div><div><label for="dataFim">Data fim</label><input id="dataFim" type="date"></div><div><label>&nbsp;</label><button id="btnFiltrar" data-test="btn-filtrar" type="button">Filtrar</button></div></div></section><section class="card"><h2>Registros</h2><table><thead><tr><th>Data</th><th>Idoso</th><th>Tipo</th><th>Duração</th><th>Descrição</th><th>Registrado por</th><th data-permissao="frequencia:editar">Editar frequência</th></tr></thead><tbody id="tbodyHistorico"></tbody></table></section></main><script src="/js/api.js"></script><script src="/js/historico.js"></script></body></html>
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Histórico | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Histórico de Atividades</h1>
+    <p class="subtitulo">
+      Consulte e filtre todas as atividades físicas registradas por idoso e período.
+      Use os filtros abaixo para encontrar registros específicos.
+    </p>
+
+    <div id="msgHistorico" class="alerta"></div>
+
+    <div class="form-grid">
+      <div>
+        <label for="filtroIdoso">Idoso</label>
+        <select id="filtroIdoso" data-test="historico-idoso">
+          <option value="">Todos</option>
+        </select>
+      </div>
+      <div>
+        <label for="dataInicio">Data início</label>
+        <input id="dataInicio" type="date">
+      </div>
+      <div>
+        <label for="dataFim">Data fim</label>
+        <input id="dataFim" type="date">
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button id="btnFiltrar" data-test="btn-filtrar" type="button">Filtrar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Registros</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Idoso</th>
+          <th>Tipo</th>
+          <th>Duração</th>
+          <th>Descrição</th>
+          <th>Registrado por</th>
+          <th data-permissao="frequencia:editar">Editar</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyHistorico"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/historico.js"></script>
+</body>
+</html>

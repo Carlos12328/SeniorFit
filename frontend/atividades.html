@@ -1,1 +1,98 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atividades | SeniorFit</title><link rel="stylesheet" href="/css/style.css"></head><body><div id="navbar"></div><main class="container"><section class="card"><h1>Registro de Atividades</h1><p class="subtitulo">Use tipos pré-cadastrados para facilitar testes de equivalência e evitar valores soltos.</p><div id="msgAtividades" class="alerta"></div><form id="formAtividade" class="form-grid"><div><label for="idIdoso">Idoso</label><select id="idIdoso" data-test="atividade-idoso"><option value="">Selecione</option></select></div><div><label for="tipo">Tipo</label><select id="tipo" data-test="atividade-tipo"><option value="">Selecione</option></select></div><div><label for="duracao">Duração em minutos</label><input id="duracao" data-test="atividade-duracao" type="number" min="1" max="480"></div><div><label for="dataAtividade">Data</label><input id="dataAtividade" data-test="atividade-data" type="date"></div><div class="span-2"><label for="descricao">Descrição</label><textarea id="descricao" data-test="atividade-descricao"></textarea></div><div class="span-2 actions"><button data-test="btn-salvar-atividade" type="submit">Registrar atividade</button></div></form></section></main><script src="/js/api.js"></script><script src="/js/atividades.js"></script></body></html>
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Atividades | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Registro de Atividades</h1>
+    <p class="subtitulo">
+      Use tipos pré-cadastrados para facilitar testes de equivalência e evitar valores soltos.
+    </p>
+
+    <div id="msgAtividades" class="alerta"></div>
+
+    <form id="formAtividade" class="form-grid">
+      <div>
+        <label for="idIdoso">Idoso</label>
+        <select id="idIdoso" data-test="atividade-idoso">
+          <option value="">Selecione</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="tipo">Tipo de atividade</label>
+        <select id="tipo" data-test="atividade-tipo">
+          <option value="">Selecione</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="duracao">Duração em minutos</label>
+        <input
+          id="duracao"
+          data-test="atividade-duracao"
+          type="number"
+          min="1"
+          max="480"
+          placeholder="Ex: 30"
+        >
+      </div>
+
+      <div>
+        <label for="dataAtividade">Data</label>
+        <input
+          id="dataAtividade"
+          data-test="atividade-data"
+          type="date"
+        >
+      </div>
+
+      <div class="span-2">
+        <label for="descricao">Descrição</label>
+        <textarea
+          id="descricao"
+          data-test="atividade-descricao"
+          placeholder="Descreva a atividade realizada..."
+        ></textarea>
+      </div>
+
+      <div class="span-2 actions">
+        <button data-test="btn-salvar-atividade" type="submit">Registrar atividade</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Atividades registradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Idoso</th>
+          <th>Tipo</th>
+          <th>Duração</th>
+          <th>Descrição</th>
+          <th>Registrado por</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyAtividades">
+        <tr><td colspan="6" class="small">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/atividades.js"></script>
+</body>
+</html>

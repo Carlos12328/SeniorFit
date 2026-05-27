@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON;
+﻿PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS permissoes;
 DROP TABLE IF EXISTS atividades;
@@ -11,6 +11,7 @@ CREATE TABLE usuarios (
   email TEXT NOT NULL UNIQUE,
   senha TEXT NOT NULL,
   tipoUsuario TEXT NOT NULL CHECK (tipoUsuario IN ('admin', 'acompanhante', 'profissional')),
+  status TEXT NOT NULL DEFAULT 'ativo' CHECK (status IN ('pendente', 'ativo', 'bloqueado')),
   criadoEm TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

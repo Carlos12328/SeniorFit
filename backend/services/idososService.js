@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 const { getDb } = require('../database/connection');
 const { validateIdoso } = require('../validations/idosoValidation');
@@ -47,6 +47,24 @@ async function listarIdosos(usuario) {
   return { ok: true, dados };
 }
 
+async function listarIdososSemAcompanhante() {
+  const db = await getDb();
+  const dados = await db.all(
+    `SELECT i.id, i.nome, i.idade FROM idosos i WHERE i.idAcompanhante IS NULL ORDER BY i.nome`
+  );
+  return { ok: true, dados };
+}
+
+async function vincularAcompanhante(idIdoso, idAcompanhante) {
+  const db = await getDb();
+  const idoso = await db.get('SELECT id, idAcompanhante FROM idosos WHERE id = ?', [idIdoso]);
+  if (!idoso) return { ok: false, statusCode: 404, codigoErro: 'IDOSO_NAO_ENCONTRADO', mensagem: 'Idoso não encontrado' };
+  if (idoso.idAcompanhante) return { ok: false, statusCode: 400, codigoErro: 'IDOSO_JA_VINCULADO', mensagem: 'Este idoso já possui um acompanhante vinculado' };
+
+  await db.run('UPDATE idosos SET idAcompanhante = ? WHERE id = ?', [idAcompanhante, idIdoso]);
+  return { ok: true, dados: await buscarIdosoPorId(idIdoso) };
+}
+
 async function validarAcessoAoIdoso(usuario, idIdoso) {
   const idoso = await buscarIdosoPorId(idIdoso);
   if (!idoso) return { ok: false, statusCode: 404, codigoErro: 'IDOSO_NAO_ENCONTRADO', mensagem: 'Idoso não encontrado' };
@@ -56,4 +74,4 @@ async function validarAcessoAoIdoso(usuario, idIdoso) {
   return { ok: true, dados: idoso };
 }
 
-module.exports = { criarIdoso, listarIdosos, buscarIdosoPorId, validarAcessoAoIdoso };
+module.exports = { criarIdoso, listarIdosos, listarIdososSemAcompanhante, vincularAcompanhante, buscarIdosoPorId, validarAcessoAoIdoso };

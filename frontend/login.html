@@ -1,1 +1,81 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | SeniorFit</title><link rel="stylesheet" href="/css/style.css"></head><body><main class="login-page"><section class="login-card"><div class="brand"><div class="logo">SF</div><div><h1>SeniorFit</h1><p class="subtitulo">Acompanhamento físico de idosos com foco em qualidade e testabilidade.</p></div></div><div id="msgErroLogin" class="alerta"></div><form id="formLogin"><label for="email">Email</label><input id="email" data-test="email" type="email" autocomplete="username" placeholder="admin@seniorfit.com"><label for="senha">Senha</label><input id="senha" data-test="senha" type="password" autocomplete="current-password" placeholder="123456"><div class="actions"><button id="btnLogin" data-test="btn-login" type="submit">Entrar</button></div></form><p class="small">Não há cadastro público de conta. Usuários são criados apenas pelo administrador.</p><p class="small"><strong>Credenciais:</strong> admin@seniorfit.com, ana@seniorfit.com, carlos@seniorfit.com ou paula@seniorfit.com. Senha: 123456.</p></section></main><script src="/js/api.js"></script><script src="/js/login.js"></script></body></html>
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="login-page">
+  <section class="login-card">
+
+    <div class="brand-center">
+      <div class="logo">SF</div>
+      <h1>SeniorFit</h1>
+      <p class="subtitulo">Acompanhamento físico de idosos com foco em qualidade e testabilidade.</p>
+    </div>
+
+    <div id="msgErroLogin" class="alerta"></div>
+
+    <form id="formLogin">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        data-test="email"
+        type="email"
+        autocomplete="username"
+        placeholder="admin@seniorfit.com"
+      >
+
+      <label for="senha">Senha</label>
+      <input
+        id="senha"
+        data-test="senha"
+        type="password"
+        autocomplete="current-password"
+        placeholder="123456"
+      >
+
+      <div class="actions">
+        <button id="btnLogin" data-test="btn-login" type="submit" style="width:100%;">
+          Entrar
+        </button>
+      </div>
+    </form>
+
+    <p class="small" style="text-align:center; margin-top:16px;">
+      Não tem conta?
+      <a href="/cadastro.html" style="color: var(--azul); font-weight:700;">Criar conta</a>
+    </p>
+
+    <div class="credenciais-teste">
+      <p class="small" style="text-align:center; margin-bottom:10px;">
+        <strong>Credenciais de teste</strong> · senha: 123456
+      </p>
+      <div class="credencial-linha">
+        <span class="credencial-email">admin@seniorfit.com</span>
+        <span class="badge badge-admin">Admin</span>
+      </div>
+      <div class="credencial-linha">
+        <span class="credencial-email">ana@seniorfit.com</span>
+        <span class="badge badge-acompanhante">Acompanhante</span>
+      </div>
+      <div class="credencial-linha">
+        <span class="credencial-email">carlos@seniorfit.com</span>
+        <span class="badge badge-acompanhante">Acompanhante</span>
+      </div>
+      <div class="credencial-linha">
+        <span class="credencial-email">paula@seniorfit.com</span>
+        <span class="badge badge-profissional">Profissional</span>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/login.js"></script>
+</body>
+</html>

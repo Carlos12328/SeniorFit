@@ -9,7 +9,6 @@ if (usuario && usuario.tipoUsuario !== 'admin') {
 async function carregarPendentes() {
   const resposta = await api.usuarios.listarPendentes();
   const div = document.getElementById('listaPendentes');
-
   if (!resposta || !resposta.ok) {
     div.innerHTML = '<p class="small">Erro ao carregar pendentes.</p>';
     return;
@@ -18,7 +17,6 @@ async function carregarPendentes() {
     div.innerHTML = '<p class="small">Nenhum cadastro aguardando aprovação. 🎉</p>';
     return;
   }
-
   div.innerHTML = `
     <table>
       <thead>
@@ -46,12 +44,10 @@ async function carregarPendentes() {
 async function carregarUsuarios() {
   const resposta = await api.usuarios.listar();
   const tbody = document.getElementById('tbodyUsuarios');
-
   if (!resposta || !resposta.ok) {
     tbody.innerHTML = '<tr><td colspan="5">Erro ao carregar usuários.</td></tr>';
     return;
   }
-
   tbody.innerHTML = resposta.dados.map(u => `
     <tr id="usuario-${u.id}">
       <td>${u.nome}</td>
@@ -93,7 +89,6 @@ async function rejeitar(id) {
   carregarUsuarios();
 }
 
-// Modal de edição
 let editandoId = null;
 
 function abrirEdicao(id, nome, email) {
@@ -113,10 +108,8 @@ async function salvarEdicao() {
   const nome  = document.getElementById('editNome').value.trim();
   const email = document.getElementById('editEmail').value.trim();
   if (!nome || !email) return mostrarAlerta('msgEdicao', 'Nome e email são obrigatórios', 'erro');
-
   const resposta = await api.usuarios.editar(editandoId, { nome, email });
   if (!resposta || !resposta.ok) return mostrarAlerta('msgEdicao', resposta?.mensagem || 'Erro ao salvar', 'erro');
-
   fecharEdicao();
   carregarUsuarios();
 }

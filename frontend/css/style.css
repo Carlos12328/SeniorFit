@@ -55,3 +55,50 @@ th { background: #f8fafc; }
 .oculto { display: none !important; }
 .small { font-size: 13px; color: var(--cinza); }
 @media (max-width: 760px) { .grid, .grid-2, .metricas, .form-grid { grid-template-columns: 1fr; } .form-grid .span-2 { grid-column: span 1; } .navbar .container { display: block; } .nav-links { margin-top: 10px; } }
+
+.credencial-email {
+  font-size: 13px;
+  color: #374151;
+}
+.credencial-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--borda);
+}
+.credencial-linha:last-child {
+  border-bottom: none;
+}
+
+.brand-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.brand-center .logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--azul);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 auto;
+}
+.brand-center h1 {
+  margin: 0;
+  text-align: center;
+}
+.brand-center .subtitulo {
+  margin: 0;
+  text-align: center;
+  max-width: 320px;
+}
