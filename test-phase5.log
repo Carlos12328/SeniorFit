@@ -1,0 +1,102 @@
+
+> seniorfit@1.0.0 test
+> jest --coverage --verbose --runInBand
+
+PASS tests/unit/validations.test.js
+  EP e BVA2 — login
+    ✓ email ausente retorna EMAIL_AUSENTE (2 ms)
+    ✓ email inválido retorna EMAIL_INVALIDO (1 ms)
+    ✓ senha ausente retorna SENHA_AUSENTE
+    ✓ senha com 5 caracteres retorna SENHA_CURTA
+    ✓ senha com 6 caracteres é válida
+  BVA2 — duração da atividade
+    ✓ 0 é inválido pela borda mínima (1 ms)
+    ✓ 1 é válido pela borda mínima
+    ✓ 480 é válido pela borda máxima
+    ✓ 481 é inválido pela borda máxima (1 ms)
+  BVA2 — data da atividade
+    ✓ hoje não é futuro (1 ms)
+    ✓ amanhã é futuro
+    ✓ data ausente retorna DATA_AUSENTE
+    ✓ data futura retorna DATA_FUTURA (1 ms)
+  BVA2 — idade do idoso
+    ✓ idade 0 é inválida
+    ✓ idade 1 é válida
+    ✓ idade 130 é válida
+    ✓ idade 131 é inválida
+  EP — atividade
+    ✓ idoso ausente retorna IDOSO_AUSENTE
+    ✓ tipo não pré-cadastrado retorna TIPO_ATIVIDADE_INVALIDO
+    ✓ atividade válida retorna dados normalizados
+  Tabela de Decisão — permissões e vínculo de idoso
+    ✓ visualizar módulo permitido retorna true (1 ms)
+    ✓ editar módulo sem permissão retorna false
+    ✓ admin acessa qualquer idoso
+    ✓ profissional acessa qualquer idoso
+    ✓ acompanhante acessa idoso vinculado (1 ms)
+    ✓ acompanhante não acessa idoso não vinculado
+  Frequência — período e ordenação cronológica
+    ✓ período inválido é rejeitado
+    ✓ frequência por dia vem ordenada da data mais antiga para a mais recente (8 ms)
+
+PASS tests/unit/api.test.js
+  API — autenticação
+    ✓ POST /login retorna token para credenciais válidas (116 ms)
+    ✓ POST /login retorna 401 para senha inválida (91 ms)
+  API — perfis e isolamento de dados
+    ✓ admin lista todos os idosos (98 ms)
+    ✓ acompanhante lista apenas idosos vinculados (94 ms)
+    ✓ acompanhante não acessa histórico de idoso não vinculado (96 ms)
+  API — criação e validação de recursos
+    ✓ admin cria usuário profissional (190 ms)
+    ✓ profissional cria idoso (97 ms)
+    ✓ profissional registra atividade válida (96 ms)
+    ✓ atividade com duração 481 retorna erro semântico (94 ms)
+  API — frequência e edição
+    ✓ GET /frequencia retorna métricas (95 ms)
+    ✓ PUT /atividades/:id edita duração que alimenta a frequência (97 ms)
+
+--------------------------|---------|----------|---------|---------|-------------------
+File                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+--------------------------|---------|----------|---------|---------|-------------------
+All files                 |    86.4 |    73.68 |   93.75 |   91.96 |                   
+ controllers              |   93.75 |       75 |   81.81 |   93.75 |                   
+  atividadesController.js |   88.88 |      100 |      75 |   88.88 | 9                 
+  authController.js       |     100 |      100 |     100 |     100 |                   
+  baseController.js       |     100 |       75 |     100 |     100 | 7                 
+  frequenciaController.js |     100 |      100 |     100 |     100 |                   
+  idososController.js     |     100 |      100 |     100 |     100 |                   
+  usuariosController.js   |      80 |      100 |      50 |      80 | 5                 
+ data                     |     100 |      100 |     100 |     100 |                   
+  tiposAtividades.js      |     100 |      100 |     100 |     100 |                   
+ middleware               |   79.54 |    68.75 |     100 |   88.23 |                   
+  auth.js                 |      84 |    64.28 |     100 |    91.3 | 31,38             
+  permissions.js          |   73.68 |    72.22 |     100 |   81.81 | 9,16              
+ routes                   |     100 |      100 |     100 |     100 |                   
+  atividadesRoutes.js     |     100 |      100 |     100 |     100 |                   
+  authRoutes.js           |     100 |      100 |     100 |     100 |                   
+  frequenciaRoutes.js     |     100 |      100 |     100 |     100 |                   
+  idososRoutes.js         |     100 |      100 |     100 |     100 |                   
+  usuariosRoutes.js       |     100 |      100 |     100 |     100 |                   
+ services                 |    82.6 |    63.88 |   91.66 |   90.32 |                   
+  atividadesService.js    |   81.48 |    66.66 |     100 |   89.36 | 51-52,55-56,76    
+  authService.js          |   88.88 |    66.66 |     100 |   94.11 | 15                
+  frequenciaService.js    |   76.47 |       50 |     100 |   92.85 | 9                 
+  idososService.js        |   89.65 |    71.42 |     100 |   96.29 | 26                
+  usuariosService.js      |      75 |       50 |      50 |   78.94 | 15,29-31          
+ utils                    |    92.5 |    70.58 |     100 |   97.14 |                   
+  frequencyUtils.js       |   93.54 |    73.07 |     100 |   96.42 | 21                
+  responses.js            |   88.88 |     62.5 |     100 |     100 | 3-5,11            
+ validations              |   85.71 |    84.88 |     100 |   90.12 |                   
+  activityValidation.js   |   88.88 |    88.88 |     100 |   93.75 | 13                
+  authValidation.js       |     100 |      100 |     100 |     100 |                   
+  dateValidation.js       |   78.94 |    66.66 |     100 |    87.5 | 15,19             
+  durationValidation.js   |   88.88 |     90.9 |     100 |   88.88 | 5                 
+  idosoValidation.js      |   81.81 |    88.88 |     100 |   81.81 | 5,8               
+  userValidation.js       |   71.42 |    69.23 |     100 |   83.33 | 8,15              
+--------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 2 passed, 2 total
+Tests:       39 passed, 39 total
+Snapshots:   0 total
+Time:        2.48 s
+Ran all test suites.

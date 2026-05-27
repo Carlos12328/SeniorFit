@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Meu Vínculo | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Meus idosos</h1>
+    <p class="subtitulo">
+      Idosos vinculados a você. Você pode acompanhar suas atividades e histórico.
+    </p>
+    <div id="msgMeusIdosos" class="alerta"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyMeusIdosos">
+        <tr><td colspan="2" class="small">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/acompanhante.js"></script>
+</body>
+</html>

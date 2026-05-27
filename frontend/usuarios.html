@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Usuários | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<!-- Modal de edição -->
+<div id="modalEdicao" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:100; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:16px; padding:32px; width:100%; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,.15);">
+    <h2 style="margin-top:0;">Editar usuário</h2>
+    <div id="msgEdicao" class="alerta"></div>
+    <label for="editNome">Nome</label>
+    <input id="editNome" type="text" placeholder="Nome completo">
+    <label for="editEmail" style="margin-top:12px;">Email</label>
+    <input id="editEmail" type="email" placeholder="email@exemplo.com">
+    <div class="actions" style="margin-top:20px;">
+      <button onclick="salvarEdicao()">Salvar</button>
+      <button onclick="fecharEdicao()" class="secundario">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+  <section class="card" id="secaoPendentes">
+    <h2>⏳ Aprovações pendentes</h2>
+    <p class="subtitulo">Profissionais aguardando sua aprovação para acessar o sistema.</p>
+    <div id="msgPendentes" class="alerta"></div>
+    <div id="listaPendentes">
+      <p class="small">Carregando...</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Todos os usuários</h2>
+    <div id="msgUsuarios" class="alerta"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Perfil</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyUsuarios">
+        <tr><td colspan="5" class="small">Carregando...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/usuarios.js"></script>
+</body>
+</html>

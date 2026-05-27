@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cadastro | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<main class="login-page">
+  <section class="login-card">
+
+    <div class="brand-center">
+      <div class="logo">SF</div>
+      <h1>SeniorFit</h1>
+      <p class="subtitulo">Crie sua conta para começar.</p>
+    </div>
+
+    <div id="msgCadastro" class="alerta"></div>
+
+    <form id="formCadastro">
+      <label for="nome">Nome completo</label>
+      <input
+        id="nome"
+        data-test="nome"
+        type="text"
+        placeholder="Seu nome completo"
+      >
+
+      <label for="email">Email</label>
+      <input
+        id="email"
+        data-test="email"
+        type="email"
+        placeholder="seu@email.com"
+      >
+
+      <label for="tipoUsuario">Perfil</label>
+      <select id="tipoUsuario" data-test="tipo-usuario">
+        <option value="">Selecione seu perfil</option>
+        <option value="profissional">Profissional de saúde</option>
+        <option value="acompanhante">Acompanhante</option>
+      </select>
+
+      <div id="avisoAprovacao" class="alerta alerta-sucesso" style="display:none; margin-top:10px;">
+        ⏳ Profissionais precisam de aprovação do administrador antes de acessar o sistema.
+      </div>
+
+      <label for="senha">Senha</label>
+      <input
+        id="senha"
+        data-test="senha"
+        type="password"
+        placeholder="Mínimo 6 caracteres"
+      >
+
+      <label for="confirmarSenha">Confirmar senha</label>
+      <input
+        id="confirmarSenha"
+        data-test="confirmar-senha"
+        type="password"
+        placeholder="Repita a senha"
+      >
+
+      <div class="actions">
+        <button id="btnCadastrar" data-test="btn-cadastrar" type="submit" style="width:100%;">
+          Criar conta
+        </button>
+      </div>
+    </form>
+
+    <p class="small" style="text-align:center; margin-top:16px;">
+      Já tem conta?
+      <a href="/login.html" style="color: var(--azul); font-weight:700;">Entrar</a>
+    </p>
+
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/cadastro.js"></script>
+</body>
+</html>

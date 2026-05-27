@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dashboard | SeniorFit</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="navbar"></div>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Dashboard e Frequência</h1>
+    <p class="subtitulo">
+      Consulte a frequência por idoso e período.
+      A tabela é ordenada cronologicamente para evitar a ordenação bagunçada de períodos.
+    </p>
+
+    <div id="msgDash" class="alerta"></div>
+
+    <div class="form-grid">
+      <div>
+        <label for="idosoDash">Idoso</label>
+        <select id="idosoDash" data-test="select-idoso">
+          <option value="">Selecione</option>
+        </select>
+      </div>
+      <div>
+        <label for="periodoDash">Período</label>
+        <select id="periodoDash" data-test="select-periodo">
+          <option value="semana">Última semana</option>
+          <option value="mes">Último mês</option>
+          <option value="7">7 dias</option>
+          <option value="15">15 dias</option>
+          <option value="30">30 dias</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btnConsultar" data-test="btn-consultar">Consultar frequência</button>
+    </div>
+  </section>
+
+  <section id="resultadoFrequencia" class="card oculto">
+    <h2 id="tituloFrequencia">Frequência</h2>
+    <div class="metricas">
+      <div class="metrica">Atividades<strong id="metricaTotal">0</strong></div>
+      <div class="metrica">Dias ativos<strong id="metricaDias">0</strong></div>
+      <div class="metrica">Média<strong id="metricaMedia">0</strong></div>
+    </div>
+    <h3>Frequência por dia</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyFrequencia"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
