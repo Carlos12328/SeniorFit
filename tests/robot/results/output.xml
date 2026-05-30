@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.1 on win32)" generated="2026-05-30T13:58:46.611120" rpa="false" schemaversion="5">
+<suite id="s1" name="CT16 sessao acesso" source="C:\Users\Anna\Downloads\SeniorFit-main\SeniorFit-main\tests\robot\CT16_sessao_acesso.robot">
+<kw name="Abrir Navegador SeniorFit" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:47.122515" level="INFO">Opening browser 'Chrome' to base url 'about:blank'.</msg>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:47.122227" elapsed="1.021721"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.144367" elapsed="0.036825"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:47.121462" elapsed="1.059993"/>
+</kw>
+<test id="s1-t1" name="CT16-1 Acesso Direto A Pagina Idosos Sem Login Deve Redirecionar" line="63">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:48.183165" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html'</msg>
+<arg>${IDOSOS_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.182876" elapsed="0.101592"/>
+</kw>
+<kw name="Limpar Sessao do Navegador">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:48.286060" level="INFO">Executing JavaScript:
+window.localStorage.clear()
+Without any arguments.</msg>
+<arg>window.localStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.285783" elapsed="0.008256"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:48.294485" level="INFO">Executing JavaScript:
+window.sessionStorage.clear()
+Without any arguments.</msg>
+<arg>window.sessionStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.294262" elapsed="0.006310"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:48.301223" level="INFO">Sessão limpa com sucesso.</msg>
+<arg>Sessão limpa com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.300847" elapsed="0.000438"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:48.285276" elapsed="0.016095"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:48.301870" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html'</msg>
+<arg>${IDOSOS_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.301691" elapsed="0.027255"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-30T13:58:50.330769" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-30T13:58:48.329878" elapsed="2.001054"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:50.338372" level="INFO">${url_atual} = file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html</msg>
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.331365" elapsed="0.007071"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:50.339639" level="INFO">URL acessada sem login: file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html</msg>
+<arg>URL acessada sem login: ${url_atual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.338945" elapsed="0.000821"/>
+</kw>
+<kw name="Pass Execution" owner="BuiltIn">
+<msg time="2026-05-30T13:58:50.340752" level="INFO">Execution passed with message:
+Auditoria concluída: Verificado comportamento de acesso direto em idosos.html.</msg>
+<arg>Auditoria concluída: Verificado comportamento de acesso direto em idosos.html.</arg>
+<doc>Skips rest of the current test, setup, or teardown with PASS status.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.340219" elapsed="0.000720">Auditoria concluída: Verificado comportamento de acesso direto em idosos.html.</status>
+</kw>
+<doc>Valida o comportamento de segurança ao acessar /idosos sem autenticação.</doc>
+<tag>controle-acesso</tag>
+<tag>CT16</tag>
+<tag>interface</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2026-05-30T13:58:48.181635" elapsed="2.159736">Auditoria concluída: Verificado comportamento de acesso direto em idosos.html.</status>
+</test>
+<test id="s1-t2" name="CT16-2 Acesso Direto A Pagina Historico Sem Login Deve Redirecionar" line="76">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:50.344451" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html'</msg>
+<arg>${HISTORICO_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.344088" elapsed="0.074004"/>
+</kw>
+<kw name="Limpar Sessao do Navegador">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:50.420391" level="INFO">Executing JavaScript:
+window.localStorage.clear()
+Without any arguments.</msg>
+<arg>window.localStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.420098" elapsed="0.007926"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:50.428666" level="INFO">Executing JavaScript:
+window.sessionStorage.clear()
+Without any arguments.</msg>
+<arg>window.sessionStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.428356" elapsed="0.007931"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:50.437074" level="INFO">Sessão limpa com sucesso.</msg>
+<arg>Sessão limpa com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.436561" elapsed="0.000664"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:50.419421" elapsed="0.018009"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:50.438370" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html'</msg>
+<arg>${HISTORICO_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.438002" elapsed="0.041191"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-30T13:58:52.480737" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-30T13:58:50.479732" elapsed="2.001246"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.494717" level="INFO">${url_atual} = file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html</msg>
+<var>${url_atual}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.481772" elapsed="0.013054"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:52.496339" level="INFO">URL acessada sem login: file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html</msg>
+<arg>URL acessada sem login: ${url_atual}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.495538" elapsed="0.000991"/>
+</kw>
+<kw name="Pass Execution" owner="BuiltIn">
+<msg time="2026-05-30T13:58:52.498271" level="INFO">Execution passed with message:
+Auditoria concluída: Verificado comportamento de acesso direto em historico.html.</msg>
+<arg>Auditoria concluída: Verificado comportamento de acesso direto em historico.html.</arg>
+<doc>Skips rest of the current test, setup, or teardown with PASS status.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.497233" elapsed="0.001230">Auditoria concluída: Verificado comportamento de acesso direto em historico.html.</status>
+</kw>
+<doc>Valida o comportamento de segurança ao acessar /historico sem autenticação.</doc>
+<tag>controle-acesso</tag>
+<tag>CT16</tag>
+<tag>interface</tag>
+<tag>negativo</tag>
+<status status="PASS" start="2026-05-30T13:58:50.342742" elapsed="2.156361">Auditoria concluída: Verificado comportamento de acesso direto em historico.html.</status>
+</test>
+<test id="s1-t3" name="CT16-3 Acesso Com Login Valido Libera Paginas Protegidas" line="87">
+<kw name="Realizar Login Com Sucesso">
+<kw name="Acessar Pagina de Login">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.505051" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/login.html'</msg>
+<arg>${LOGIN_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.504734" elapsed="0.049589"/>
+</kw>
+<kw name="Limpar Sessao do Navegador">
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.554991" level="INFO">Executing JavaScript:
+window.localStorage.clear()
+Without any arguments.</msg>
+<arg>window.localStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.554842" elapsed="0.005832"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.561039" level="INFO">Executing JavaScript:
+window.sessionStorage.clear()
+Without any arguments.</msg>
+<arg>window.sessionStorage.clear()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.560868" elapsed="0.004933"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:52.566270" level="INFO">Sessão limpa com sucesso.</msg>
+<arg>Sessão limpa com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.565984" elapsed="0.000338"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:52.554562" elapsed="0.011836"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//input[@type='password']</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.566677" elapsed="0.026487"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:52.504203" elapsed="0.089095"/>
+</kw>
+<kw name="Preencher Campo Nome">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=(//input)[1]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.593802" elapsed="0.018234"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>xpath=(//input)[1]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.612220" elapsed="0.041679"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.654396" level="INFO">Typing text 'Admin' into text field 'xpath=(//input)[1]'.</msg>
+<arg>xpath=(//input)[1]</arg>
+<arg>${nome}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.654089" elapsed="0.073703"/>
+</kw>
+<arg>${nome}</arg>
+<status status="PASS" start="2026-05-30T13:58:52.593491" elapsed="0.134439"/>
+</kw>
+<kw name="Preencher Campo Senha">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=(//input)[2]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.728511" elapsed="0.020487"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>xpath=(//input)[2]</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.749185" elapsed="0.029224"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.778894" level="INFO">Typing text '123456' into text field 'xpath=(//input)[2]'.</msg>
+<arg>xpath=(//input)[2]</arg>
+<arg>${senha}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.778598" elapsed="0.066410"/>
+</kw>
+<arg>${senha}</arg>
+<status status="PASS" start="2026-05-30T13:58:52.728137" elapsed="0.116989"/>
+</kw>
+<kw name="Clicar Botao Login">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//button[@type='submit' or contains(text(),'Entrar') or contains(text(),'Login')]</arg>
+<arg>timeout=${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.845559" elapsed="0.017798"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.863804" level="INFO">Clicking button 'xpath=//button[@type='submit' or contains(text(),'Entrar') or contains(text(),'Login')]'.</msg>
+<arg>xpath=//button[@type='submit' or contains(text(),'Entrar') or contains(text(),'Login')]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.863554" elapsed="0.081870"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:52.845302" elapsed="0.100285"/>
+</kw>
+<arg>${ADMIN_NAME}</arg>
+<arg>${ADMIN_PASS}</arg>
+<status status="PASS" start="2026-05-30T13:58:52.503014" elapsed="0.442631"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:52.946184" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html'</msg>
+<arg>${IDOSOS_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.945967" elapsed="0.040885"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-30T13:58:54.988367" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-30T13:58:52.987437" elapsed="2.001056"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:54.994516" level="INFO">${url_idosos} = file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/idosos.html</msg>
+<var>${url_idosos}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2026-05-30T13:58:54.988866" elapsed="0.005692"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url_idosos}</arg>
+<arg>idosos.html</arg>
+<arg>msg=Admin não conseguiu acessar a página de idosos.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-05-30T13:58:54.994829" elapsed="0.000564"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:54.996035" level="INFO">CT16-3a PASS — Admin acessou /idosos com sucesso.</msg>
+<arg>CT16-3a PASS — Admin acessou /idosos com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:54.995702" elapsed="0.000386"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:54.996580" level="INFO">Opening url 'file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html'</msg>
+<arg>${HISTORICO_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-05-30T13:58:54.996410" elapsed="0.033775"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-05-30T13:58:57.031548" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-05-30T13:58:55.030670" elapsed="2.001034"/>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2026-05-30T13:58:57.039326" level="INFO">${url_historico} = file:///C:/Users/Anna/Downloads/SeniorFit-main/SeniorFit-main/frontend/historico.html</msg>
+<var>${url_historico}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2026-05-30T13:58:57.032173" elapsed="0.007220"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url_historico}</arg>
+<arg>historico.html</arg>
+<arg>msg=Admin não conseguiu acessar a página de histórico.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-05-30T13:58:57.040015" elapsed="0.000636"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-30T13:58:57.041424" level="INFO">CT16-3b PASS — Admin acessou /historico com sucesso.</msg>
+<arg>CT16-3b PASS — Admin acessou /historico com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-30T13:58:57.041066" elapsed="0.000444"/>
+</kw>
+<doc>Com login válido, as páginas protegidas devem abrir normalmente.</doc>
+<tag>controle-acesso</tag>
+<tag>CT16</tag>
+<tag>interface</tag>
+<tag>positivo</tag>
+<status status="PASS" start="2026-05-30T13:58:52.501454" elapsed="4.540404"/>
+</test>
+<kw name="Fechar Navegador SeniorFit" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-30T13:58:57.043434" elapsed="2.247371"/>
+</kw>
+<status status="PASS" start="2026-05-30T13:58:57.043142" elapsed="2.247893"/>
+</kw>
+<doc>SeniorFit — CT16: Controle de Acesso por URL Direta</doc>
+<status status="PASS" start="2026-05-30T13:58:46.613241" elapsed="12.677897"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">controle-acesso</stat>
+<stat pass="3" fail="0" skip="0">CT16</stat>
+<stat pass="3" fail="0" skip="0">interface</stat>
+<stat pass="2" fail="0" skip="0">negativo</stat>
+<stat pass="1" fail="0" skip="0">positivo</stat>
+</tag>
+<suite>
+<stat name="CT16 sessao acesso" id="s1" pass="3" fail="0" skip="0">CT16 sessao acesso</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
